@@ -1,0 +1,97 @@
+<div id="dailyFeeds">
+
+  <p-growl [value]="msgs"></p-growl>
+
+  <p-confirmDialog width="520" acceptButtonStyleClass="ui-button-success"
+  rejectButtonStyleClass="ui-button-danger"></p-confirmDialog>
+
+  <p-dialog [(visible)]="feedEditor.display" width="420" *ngIf="feedEditor.display">
+    <p-header> Create new Feed</p-header>
+
+    <div style="margin: 15px">
+      <h4>
+        <span class="ui-float-label">
+          <input id="image-input" type="text" size="30" pInputText [(ngModel)]="feedEditor.workingFeed.image">
+          <label for="image-input">Image URL</label>
+        </span>
+      </h4>
+      <h4>
+        <span class="ui-float-label">
+          <input id="title-input" type="text" size="30" pInputText [(ngModel)]="feedEditor.workingFeed.title">
+          <label for="title-input">Title</label>
+        </span>
+      </h4>
+      <h4>
+        <span class="ui-float-label">
+          <input id="body-input" type="text" size="30" pInputText [(ngModel)]="feedEditor.workingFeed.body">
+          <label for="body-input">Body</label>
+        </span>
+      </h4>
+      <h4>
+        <span class="ui-float-label">
+          <input id="source-input" type="text" size="30" pInputText [(ngModel)]="feedEditor.workingFeed.source">
+          <label for="source-input">Source</label>
+        </span>
+      </h4>
+      <h4>
+        <span class="ui-float-label">
+          <input id="publisher-input" type="text" size="30" pInputText [(ngModel)]="feedEditor.workingFeed.publisher">
+          <label for="publisher-input">Publisher</label>
+        </span>
+      </h4>
+    </div>
+
+    <p-footer>
+      <button pButton type="button" label="Save feed" icon="fa-check" class="ui-button-success" (click)="saveFeed(feed)"></button>
+      <button pButton type="button" label="Close" icon="fa-times-circle" class="ui-button-danger" (click)="feedEditor.display = false"></button>
+    </p-footer>
+  </p-dialog>
+
+  <div *ngIf="!dailyFeeds.length" style="text-align: center">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+
+  <div *ngIf="dailyFeeds.length">
+    <p-dataGrid [value]="dailyFeeds | search: feedEditor.search" [paginator]="true" [rows]="40" [immutable]=false>
+      <p-header>
+        <div class="ui-g">
+          <div class="ui-g-12 ui-lg-4" style="text-align: left">
+            <input id="search-input" type="text" size="30" pInputText [(ngModel)]="feedEditor.search" placeholder="Type to filter">
+          </div>
+          <div class="ui-g-12 ui-lg-4">
+            <h3 style="margin: 2px auto">List of Feeds</h3>
+          </div>
+          <div class="ui-g-12 ui-lg-4" style="text-align: right">
+            <!-- <button pButton type="button" label="Add feed" icon="fa-plus-circle" class="ui-button-primary" (click)="feedEditor.open()"></button> -->
+          </div>
+        </div>
+      </p-header>
+
+      <ng-template let-feed pTemplate="item">
+        <div class="ui-sm-12 ui-md-6 ui-lg-4 ui-xl-3" [@itemAnim]>
+
+          <p-card title=" {{ feed.title }} " [style]="{width: '360px'}" styleClass="ui-card-shadow">
+            <p-header>
+              <img src="Card" [src]=" feed.image ? feed.image : 'http://www.enginuityww.com/wp-content/themes/TechNews/images/img_not_available.png' ">
+            </p-header>
+            <div> {{ feed.body }} </div>
+            <p-footer>
+              <p style="display:inline-block; width: 60%; text-align: left"> {{ feed.publisher }} </p>
+              <p style="display:inline-block; width: 35%; text-align: right"> {{ feed.source }} </p>
+              <div style="text-align: center">
+                <a pButton type="button" label="Full Edit" icon="fa-info-circle"
+                class="btn-xs ui-button-warning" [routerLink]="['edit', feed._id]"></a>
+
+                <button pButton type="button" label="Edit feed" icon="fa-info-circle"
+                class="btn-xs ui-button-warning" (click)="feedEditor.open(feed)"></button>
+
+                <button pButton type="button" label="Delete feed" icon="fa-times-circle"
+                class="btn-xs ui-button-danger" (click)="deleteFeed(feed)"></button>
+              </div>
+            </p-footer>
+          </p-card>
+        </div>
+      </ng-template>
+    </p-dataGrid>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div id="createFeeds">
+    <p-dialog [(visible)]="feedEditor.display" [resizable]="true" [closable]="false" [responsive]="true" (onHide)="goBack()">
+      <p-header> Create new Feed</p-header>
+
+      <div style="margin: 15px">
+        <h4>
+          <span class="ui-float-label">
+            <input id="image-input" type="text" size="30" pInputText [(ngModel)]="feedEditor.workingFeed.image">
+            <label for="image-input">Image URL</label>
+          </span>
+        </h4>
+        <h4>
+          <span class="ui-float-label">
+            <input id="title-input" type="text" size="30" pInputText [(ngModel)]="feedEditor.workingFeed.title">
+            <label for="title-input">Title</label>
+          </span>
+        </h4>
+        <h4>
+          <span class="ui-float-label">
+            <input id="body-input" type="text" size="30" pInputText [(ngModel)]="feedEditor.workingFeed.body">
+            <label for="body-input">Body</label>
+          </span>
+        </h4>
+        <h4>
+          <span class="ui-float-label">
+            <input id="source-input" type="text" size="30" pInputText [(ngModel)]="feedEditor.workingFeed.source">
+            <label for="source-input">Source</label>
+          </span>
+        </h4>
+        <h4>
+          <span class="ui-float-label">
+            <input id="publisher-input" type="text" size="30" pInputText [(ngModel)]="feedEditor.workingFeed.publisher">
+            <label for="publisher-input">Publisher</label>
+          </span>
+        </h4>
+      </div>
+
+      <p-footer>
+        <button pButton type="button" label="Save feed" icon="fa-check" class="ui-button-success" (click)="saveFeed(feed)"></button>
+        <button pButton type="button" label="Close" icon="fa-times-circle" class="ui-button-danger" (click)="feedEditor.display = false"></button>
+      </p-footer>
+    </p-dialog>
+  </div>
