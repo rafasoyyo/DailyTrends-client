@@ -53,13 +53,17 @@ export class FeedsDailyComponent implements OnInit {
   editFeed(feed: Feed) {
     this.msgs = [{severity: 'success', summary: 'Confirmed', detail: 'Feed edited!'}];
     const index = this.dailyFeeds.findIndex( f => f._id === feed._id );
-    return this.dailyFeeds.splice(index, 1, feed);
+    if (index !== -1) {
+      return this.dailyFeeds.splice(index, 1, feed);
+    }
   }
 
   removeFeed(feed: Feed) {
     this.msgs = [{severity: 'success', summary: 'Confirmed', detail: 'Feed deleted!'}];
     const index = this.dailyFeeds.findIndex( f => f._id === feed._id );
-    this.dailyFeeds.splice(index, 1);
+    if (index !== -1) {
+      this.dailyFeeds.splice(index, 1);
+    }
     if (!this.dailyFeeds.length) {
       this.getTodayFeeds();
     }
