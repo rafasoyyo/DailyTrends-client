@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0;
+    padding: 0;
+    padding-top: 60px;
+    font-family: sans-serif;
+    color: #4c4c4c;
+}
+
+header{
+    background-color: #d6d6d6;
+    color: ;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+}
+
+#dailyFeeds
+    .ui-card.ui-widget-content{
+        display: block;
+        margin: auto;
+}
+
+#dailyFeeds
+    .ui-card-header img {
+        width: 100%;
+        max-height: 300px;
+        max-width: 100%;
+        display: block;
+        margin: auto;
+}
+
+.ui-button.btn-xs{
+    font-size: 12px;
+}
