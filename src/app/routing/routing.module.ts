@@ -9,11 +9,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { DataGridModule } from 'primeng/datagrid';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { GrowlModule } from 'primeng/growl';
+import { InputTextModule } from 'primeng/inputtext';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 import { AppComponent } from '../app.component';
 
 import { FeedsDailyComponent } from '../feeds/feeds-daily/feeds-daily.component';
 
+import { FeedsService } from '../feeds/feeds.service';
+import { ArrayFilterPipe } from '../pipes/array-filter.pipe';
 
 const routes: Routes = [
   { path: '', redirectTo: 'feeds', pathMatch: 'full' },
@@ -23,6 +34,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     FeedsDailyComponent,
+    ArrayFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -32,9 +44,19 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule,
     HttpClientModule,
+    ButtonModule,
+    CardModule,
+    DataGridModule,
+    DialogModule,
+    ConfirmDialogModule,
+    GrowlModule,
+    InputTextModule,
+    ProgressSpinnerModule,
     RouterModule.forRoot( routes )
   ],
   providers: [
+    ConfirmationService,
+    FeedsService
   ],
 })
 
