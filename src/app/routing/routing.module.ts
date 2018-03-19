@@ -22,6 +22,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { AppComponent } from '../app.component';
 
 import { FeedsDailyComponent } from '../feeds/feeds-daily/feeds-daily.component';
+import { FeedsEditComponent } from '../feeds/feeds-edit/feeds-edit.component';
 
 import { FeedsService } from '../feeds/feeds.service';
 import { ArrayFilterPipe } from '../pipes/array-filter.pipe';
@@ -29,11 +30,13 @@ import { ArrayFilterPipe } from '../pipes/array-filter.pipe';
 const routes: Routes = [
   { path: '', redirectTo: 'feeds', pathMatch: 'full' },
   { path: 'feeds', component: FeedsDailyComponent },
+  { path: 'feeds/edit/:feedsId', component: FeedsEditComponent }
 ];
 
 @NgModule({
   declarations: [
     FeedsDailyComponent,
+    FeedsEditComponent,
     ArrayFilterPipe
   ],
   imports: [
