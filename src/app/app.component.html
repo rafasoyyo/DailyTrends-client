@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<header class="ui-g-12" style="text-align: center">
+  <div class="ui-g-4">
+    <h3></h3>
+  </div>
+  <div class="ui-g-4">
+    <h3 style="margin: 2px auto"> {{ title }} </h3>
+  </div>
+  <div class="ui-g-4">
+    <a routerLink="/feeds/create" routerLinkActive="active" *ngIf="router.url === '/feeds'"
+    pButton label="Add feed" icon="fa-plus-circle" class="ui-button-primary"></a>
+    <a routerLink="/feeds" routerLinkActive="active" *ngIf="router.url !== '/feeds'"
+    pButton label="See feeds" icon="fa-plus-circle" class="ui-button-primary"></a>
+  </div>
+</header>
+
+<router-outlet></router-outlet>
