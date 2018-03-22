@@ -10,6 +10,6 @@ export class AppComponent {
 
   constructor(private router: Router) {}
 
-  title = 'Daily Feeds App!';
+  private title: string = 'Daily Feeds App!';
 
 }

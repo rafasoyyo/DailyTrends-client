@@ -32,8 +32,7 @@ export class FeedsDailyComponent implements OnInit {
 
   constructor(private confirmationService: ConfirmationService, private feedsService: FeedsService) {}
 
-  private title = 'Daily Feeds App';
-  private dailyFeeds: Array<Feed> = [];
+  public dailyFeeds: Array<Feed> = [];
   private msgs: Message[] = [];
   private feedEditor: any = {
     display: false,
